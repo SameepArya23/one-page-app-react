@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import CardsContainer from "./components/cards-container/cards-container.component";
+import SideBar from "./components/side-bar/side-bar.component";
+import "./app.css";
+import { useContext } from "react";
+import { DataContext } from "./context/data.context";
 
-function App() {
+const App = () => {
+  const { barOpen } = useContext(DataContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${barOpen ? "" : "add"}`}>
+      <SideBar />
+      <CardsContainer />
     </div>
   );
-}
+};
 
 export default App;
